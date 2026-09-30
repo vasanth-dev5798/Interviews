@@ -3,12 +3,9 @@ package com.interview;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Optional;
-import java.util.Scanner;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -59,7 +56,6 @@ public class IntegerArray {
 		int[] two = { 4, 10, 2 };
 		int[] resultArr = new int[first.length + two.length];
 		int n = 0;
-		int temp = first[0];
 		/*
 		 * for (int i = 0; i<first.length;i++) { for(int j = 0; j<two.length; j++) {
 		 * 
@@ -135,8 +131,6 @@ public class IntegerArray {
 		System.out.println();
 		System.out.println(max);
 		
-		int num = 5;
-		
 		int[][] arrinterval1 = { { 1, 3 }, { 8, 10 }, { 2, 6 }, { 15, 18 } };
 		
 		Arrays.sort(arrinterval1 , Comparator.comparingInt(i->i[0]));	
@@ -196,7 +190,7 @@ public class IntegerArray {
 		
 		for(int i=0;i<addarr.length;i++) {
 			for (int j=0;j<addarr.length;j++) {
-				if(addarr[i]+addarr[j] == target) {
+				if(addarr[i]+addarr[j] == t) {
 					System.out.println("The target addition values are : " + addarr[i] +" "+  addarr[j] +" and the indices are : "+ i +" "+ j);
 				}
 			}

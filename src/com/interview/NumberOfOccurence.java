@@ -16,5 +16,6 @@ public class NumberOfOccurence {
         Arrays.stream(arr).boxed().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
         .entrySet().stream().filter(e->e.getValue()>=k).forEach(System.out::print);
         
+        sc.close();
     }
 }

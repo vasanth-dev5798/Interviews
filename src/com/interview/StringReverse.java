@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-import java.util.WeakHashMap;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -65,7 +64,7 @@ public class StringReverse {
 
 		String st = "JavaCodingProblemSolutionavaCodingroblemSolution";
 
-		Map<Character, Integer> rmap = new WeakHashMap();
+		Map<Character, Integer> rmap = new HashMap<>();
 
 		for (char c : st.toCharArray()) {
 			rmap.put(c, rmap.getOrDefault(c, 0) + 1);
