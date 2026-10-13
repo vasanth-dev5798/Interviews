@@ -22,5 +22,10 @@ public class IntegerStreams {
             .boxed()
             .collect(Collectors.groupingBy(n -> n, Collectors.counting())).entrySet()
             .stream().filter(e-> e.getValue() > 1).forEach(e -> System.out.print(e.getKey() + " " + e.getValue() + " times, "));
+
+    int[] arr = {4,6,8,0,1,2,3};
+
+    Arrays.stream(arr).filter(n->n%2==0).forEach(System.out::print);
+    
     }
 }

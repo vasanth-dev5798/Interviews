@@ -1,7 +1,9 @@
 package com.interview;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class StreamPrograms{
@@ -24,6 +26,11 @@ public class StreamPrograms{
                                 .max((word1, word2) -> Integer.compare(word1.length(), word2.length()))
                                  .orElse("");
         System.out.println("Word with highest length: " + highLengthWord);
+
+        Optional<String> hlenword = Arrays.stream(input.split(" ")).
+                    max(Comparator.comparingInt(String::length));
+
+        System.out.println("High len word : "+hlenword);
 
         String name = "Vasanthakumar";
         Map<Character, Long> charCountMap = name.chars()

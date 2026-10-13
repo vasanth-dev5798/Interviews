@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -208,6 +210,60 @@ public class Preparation {
 		Arrays.stream(darr).boxed()
 		.collect(Collectors.groupingBy(Function.identity(),Collectors.counting())).entrySet().stream()
 		.filter(e->e.getValue()>1).forEach(c->System.out.println(c.getKey()+" "));
+
+
+		// Longest substring without repeating characters
+		System.out.println("\nLongest substring without repeating characters - "
+				+ longestSubstring("abcabcbb"));   // abc -> 3
+		System.out.println("Longest substring without repeating characters - "
+				+ longestSubstring("pwwkew"));     // wke -> 3
+		System.out.println("Longest substring without repeating characters - "
+				+ longestSubstring("bbbbb"));      // b   -> 1
+
+		String lstr = "abcabccc";
+
+		Set<Character> strSet = new HashSet<>();
+
+		int left = 0;
+		int length = 0;
+
+		for(int right = 0; right<=lstr.length()-1;right++){
+			
+			while(strSet.contains(lstr.charAt(right))){
+				strSet.remove(lstr.charAt(left));
+				left++;
+			}
+			strSet.add(lstr.charAt(left));
+			length = Math.max(length, right-left+1);	
+
+		}
+
+		System.out.println(length);
+
+
+	}
+
+	// Sliding window approach – O(n) time, O(min(n,charset)) space
+	public static String longestSubstring(String s) {
+		Map<Character, Integer> lastIndex = new HashMap<>();
+		int start = 0;
+		int maxStart = 0;
+		int maxLen = 0;
+
+		for (int end = 0; end < s.length(); end++) {
+			char c = s.charAt(end);
+			// If the character was seen and is within the current window, shrink from left
+			if (lastIndex.containsKey(c) && lastIndex.get(c) >= start) {
+				start = lastIndex.get(c) + 1;
+			}
+			lastIndex.put(c, end);
+			if (end - start + 1 > maxLen) {
+				maxLen = end - start + 1;
+				maxStart = start;
+			}
+		}
+		return s.substring(maxStart, maxStart + maxLen);
+
 	}
 
 }
